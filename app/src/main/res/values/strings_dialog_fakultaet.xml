@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="neuer_eintrag">Neuer Eintrag</string>
+    <string name="fakultaet">Fakultät</string>
+    <string name="hier_fakult_t_eintragen">Hier Fakultät eintragen</string>
+    <string name="speichern">speichern</string>
+    <string name="abbrechen">abbrechen</string>
+</resources>

@@ -75,23 +75,23 @@ class DialogInput(var fakultaet: Fakultaet? = null):DialogFragment()
     private fun initEditTexts()
     {
         etForeign = rootView.findViewById(R.id.dialog_et_foreign)
-        etNative = rootView.findViewById(R.id.dialog_et_native)
+       // etNative = rootView.findViewById(R.id.dialog_et_native)
     }
 
     private fun saveData()
     {
-        if(/*!TextUtils.isEmpty(etForeign.editText?.text.toString()) && */!TextUtils.isEmpty(etNative.editText?.text.toString()))
+        if(!TextUtils.isEmpty(etForeign.editText?.text.toString()) )
         {
             if(fakultaet != null)
             {
-                fakultaet?.name = etNative.editText?.text.toString()
-              //  fakultaet?.foreignWord = etForeign.editText?.text.toString()
+              //  fakultaet?.name = etNative.editText?.text.toString()
+                fakultaet?.name = etForeign.editText?.text.toString()
                 mainViewModel.update(fakultaet!!)
                 Toast.makeText(requireContext(),"Fakultät updated in Database",Toast.LENGTH_SHORT).show()
             }
             else
             {
-                mainViewModel.insert(etNative.editText?.text.toString(),etForeign.editText?.text.toString())
+                mainViewModel.insert(etForeign.editText?.text.toString())
                 Toast.makeText(requireContext(),"Fakultät inserted in Database",Toast.LENGTH_SHORT).show()
             }
 

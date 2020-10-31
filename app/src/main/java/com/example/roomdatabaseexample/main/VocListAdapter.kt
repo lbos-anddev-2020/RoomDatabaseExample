@@ -18,8 +18,8 @@ class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocL
     private lateinit var mItemListener:OnItemClickListener
     private lateinit var mItemLongListener:OnItemLongClickListener
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VocListAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_voc,parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_fakultaet,parent,false)
         return ViewHolder(view,mItemListener,mItemLongListener)
     }
 
@@ -27,7 +27,7 @@ class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocL
         return content.size
     }
 
-    override fun onBindViewHolder(holder: VocListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val voc = content[position]
         //holder.tvMain.text = voc.foreignWord
         holder.tvMain.text = voc.name
@@ -37,18 +37,18 @@ class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocL
     class ViewHolder(itemView: View,mItemListener:OnItemClickListener,mItemLongListener:OnItemLongClickListener):RecyclerView.ViewHolder(itemView)
     {
         val tvMain:TextView = itemView.findViewById(R.id.item_main)
-        val tvSub:TextView = itemView.findViewById(R.id.item_sub)
+        //val tvSub:TextView = itemView.findViewById(R.id.item_sub)
         val image:ImageView = itemView.findViewById(R.id.item_image)
 
         init {
             // Implement simple OnClickListener for each Entry
             itemView.setOnClickListener {
-                mItemListener?.setOnItemClickListener(adapterPosition)
+                mItemListener.setOnItemClickListener(adapterPosition)
             }
 
             // Implement simple OnLongClickListener for each Entry:
             itemView.setOnLongClickListener {
-                mItemLongListener?.setOnItemLongClickListener(adapterPosition)
+                mItemLongListener.setOnItemLongClickListener(adapterPosition)
                 true
             }
 

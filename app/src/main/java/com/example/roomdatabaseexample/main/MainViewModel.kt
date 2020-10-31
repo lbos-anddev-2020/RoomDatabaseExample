@@ -1,5 +1,6 @@
 package com.example.roomdatabaseexample.main
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -19,10 +20,10 @@ class MainViewModel(application: Application): AndroidViewModel(application)
 
     ////////////////////////////////////////////////////////////
     // Methods to interact with the repository:
-    fun insert(nativeWord:String,foreignWord:String)
+    fun insert(foreignWord:String)
     {
         viewModelScope.launch {
-            val voc = Fakultaet(nativeWord)
+            val voc = Fakultaet(foreignWord)
             repository.insert(voc)
         }
     }
@@ -66,6 +67,7 @@ class MainViewModel(application: Application): AndroidViewModel(application)
 
     ////////////////////////////////////////////////////////////
     // Utils
+    @SuppressLint("SimpleDateFormat")
     private fun Date.toStringFormat(pattern:String="dd.MM.yyyy"):String
     {
         return SimpleDateFormat(pattern).format(this)
