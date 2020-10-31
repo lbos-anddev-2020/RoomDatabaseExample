@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Voc
+import com.example.roomdatabaseexample.repository.database.Fakultaet
 
-class VocListAdapter(var content:ArrayList<Voc>):RecyclerView.Adapter<VocListAdapter.ViewHolder>()
+class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocListAdapter.ViewHolder>()
 {
     // Array with the different status drawables:
     private val statusDrawables = arrayOf(R.drawable.ic_open,R.drawable.ic_work,R.drawable.ic_done)
@@ -29,9 +29,9 @@ class VocListAdapter(var content:ArrayList<Voc>):RecyclerView.Adapter<VocListAda
 
     override fun onBindViewHolder(holder: VocListAdapter.ViewHolder, position: Int) {
         val voc = content[position]
-        holder.tvMain.text = voc.foreignWord
-        holder.tvSub.text = voc.nativeWord
-        holder.image.setImageResource(statusDrawables[voc.status])
+        //holder.tvMain.text = voc.foreignWord
+        holder.tvMain.text = voc.name
+        holder.image.setImageResource(statusDrawables[1])
     }
 
     class ViewHolder(itemView: View,mItemListener:OnItemClickListener,mItemLongListener:OnItemLongClickListener):RecyclerView.ViewHolder(itemView)
@@ -55,7 +55,7 @@ class VocListAdapter(var content:ArrayList<Voc>):RecyclerView.Adapter<VocListAda
         }
     }
 
-    fun updateContent(content:ArrayList<Voc>)
+    fun updateContent(content:ArrayList<Fakultaet>)
     {
         this.content = content
         notifyDataSetChanged()

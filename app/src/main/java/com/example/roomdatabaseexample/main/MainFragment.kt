@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Voc
+import com.example.roomdatabaseexample.repository.database.Fakultaet
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -73,14 +73,14 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun startAlarmDialog(voc: Voc)
+    private fun startAlarmDialog(fakultaet: Fakultaet)
     {
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         builder.apply {
             setMessage("Warning - Entry will be deleted")
             setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
-                Toast.makeText(requireContext(),"${voc.foreignWord} deleted",Toast.LENGTH_SHORT).show()
-                mainViewModel.delete(voc)
+                Toast.makeText(requireContext(),"${fakultaet.name} deleted",Toast.LENGTH_SHORT).show()
+                mainViewModel.delete(fakultaet)
             })
             setNegativeButton("Abort", DialogInterface.OnClickListener { dialog, id ->
                 dialog.dismiss()

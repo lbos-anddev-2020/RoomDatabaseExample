@@ -5,17 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Voc::class],version = 1, exportSchema = false)
-abstract class VocDataBase():RoomDatabase()
+@Database(entities = [Fakultaet::class],version = 1, exportSchema = false)
+abstract class StudyDataBase():RoomDatabase()
 {
-    abstract val vocDao:VocDao
+    abstract val fakultaetDao:FakultaetDao
 
     companion object{
 
         @Volatile
-        private var INSTANCE:VocDataBase? = null
+        private var INSTANCE:StudyDataBase? = null
 
-        fun createInstance(application: Application):VocDataBase
+        fun createInstance(application: Application):StudyDataBase
         {
             synchronized(this)
             {
@@ -24,8 +24,8 @@ abstract class VocDataBase():RoomDatabase()
                 {
                     instance = Room.databaseBuilder(
                         application.applicationContext,
-                        VocDataBase::class.java,
-                        "voc_database")
+                        StudyDataBase::class.java,
+                        "StudyDB")
                         .fallbackToDestructiveMigration()
                         .build()
                 }

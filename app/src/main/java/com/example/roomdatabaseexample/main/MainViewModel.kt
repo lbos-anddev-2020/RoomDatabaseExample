@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.roomdatabaseexample.repository.database.Voc
+import com.example.roomdatabaseexample.repository.database.Fakultaet
 import com.example.roomdatabaseexample.repository.repository.AppRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -22,47 +22,47 @@ class MainViewModel(application: Application): AndroidViewModel(application)
     fun insert(nativeWord:String,foreignWord:String)
     {
         viewModelScope.launch {
-            val voc = Voc(0L,nativeWord,foreignWord,Date().toStringFormat(),0)
+            val voc = Fakultaet(nativeWord)
             repository.insert(voc)
         }
     }
 
-    fun update(voc:Voc)
+    fun update(fakultaet:Fakultaet)
     {
         viewModelScope.launch {
-            repository.update(voc)
+            repository.update(fakultaet)
         }
     }
 
-    fun delete(voc:Voc)
+    fun delete(fakultaet:Fakultaet)
     {
         viewModelScope.launch {
-            repository.delete(voc)
+            repository.delete(fakultaet)
         }
     }
 
-    fun getVocById(vocId:Long):Voc?
+    fun getVocById(vocId:Long):Fakultaet?
     {
-        var voc:Voc? = null
+        var fakultaet:Fakultaet? = null
         viewModelScope.launch {
-            voc = repository.getVocById(vocId)
+            fakultaet = repository.getVocById(vocId)
         }
 
-        return voc
+        return fakultaet
     }
 
-    fun getAllVocs():List<Voc>?
+    fun getAllVocs():List<Fakultaet>?
     {
-        var vocs:List<Voc>? = null
+        var fakultaets:List<Fakultaet>? = null
         viewModelScope.launch {
-            vocs =  repository.getAllVocs()
+            fakultaets =  repository.getAllVocs()
         }
-        return vocs
+        return fakultaets
     }
 
     ////////////////////////////////////////////////////////////
     // Getters for LiveData
-    fun getLiveVocList():LiveData<List<Voc>> = liveVocList
+    fun getLiveVocList():LiveData<List<Fakultaet>> = liveVocList
 
     ////////////////////////////////////////////////////////////
     // Utils

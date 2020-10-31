@@ -2,68 +2,68 @@ package com.example.roomdatabaseexample.repository.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.example.roomdatabaseexample.repository.database.Voc
-import com.example.roomdatabaseexample.repository.database.VocDao
-import com.example.roomdatabaseexample.repository.database.VocDataBase
+import com.example.roomdatabaseexample.repository.database.Fakultaet
+import com.example.roomdatabaseexample.repository.database.FakultaetDao
+import com.example.roomdatabaseexample.repository.database.StudyDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AppRepository(application: Application)
 {
-    private val vocDao:VocDao
+    private val fakultaetDao:FakultaetDao
 
     init {
-        val db = VocDataBase.createInstance(application)
-        vocDao = db.vocDao
+        val db = StudyDataBase.createInstance(application)
+        fakultaetDao = db.fakultaetDao
     }
 
     // Implement all functions
-    suspend fun insert(voc: Voc)
+    suspend fun insert(fakultaet: Fakultaet)
     {
         withContext(Dispatchers.IO)
         {
-            vocDao.insert(voc)
+            fakultaetDao.insert(fakultaet)
         }
     }
 
-    suspend fun delete(voc:Voc)
+    suspend fun delete(fakultaet:Fakultaet)
     {
         withContext(Dispatchers.IO)
         {
-            vocDao.delete(voc)
+            fakultaetDao.delete(fakultaet)
         }
     }
 
-    suspend fun update(voc:Voc)
+    suspend fun update(fakultaet:Fakultaet)
     {
         withContext(Dispatchers.IO)
         {
-            vocDao.update(voc)
+            fakultaetDao.update(fakultaet)
         }
     }
 
-    suspend fun getVocById(vocId:Long):Voc?
+    suspend fun getVocById(vocId:Long):Fakultaet?
     {
-        var voc:Voc? = null
+        var fakultaet:Fakultaet? = null
         withContext(Dispatchers.IO)
         {
-            voc =  vocDao.getVocById(vocId)
+            fakultaet =  fakultaetDao.getVocById(vocId)
         }
-        return voc
+        return fakultaet
     }
 
-    suspend fun getAllVocs():List<Voc>?
+    suspend fun getAllVocs():List<Fakultaet>?
     {
-        var vocs:List<Voc>? = null
+        var fakultaets:List<Fakultaet>? = null
         withContext(Dispatchers.IO)
         {
-            vocs =  vocDao.getVocList()
+            fakultaets =  fakultaetDao.getVocList()
         }
-        return vocs
+        return fakultaets
     }
 
-    fun getLiveDataVocs():LiveData<List<Voc>>
+    fun getLiveDataVocs():LiveData<List<Fakultaet>>
     {
-        return vocDao.getLiveDataVocList()
+        return fakultaetDao.getLiveDataVocList()
     }
 }

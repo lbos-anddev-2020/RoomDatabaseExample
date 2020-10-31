@@ -8,10 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Voc
+import com.example.roomdatabaseexample.repository.database.Fakultaet
 import com.google.android.material.textfield.TextInputLayout
 
-class DialogInput(var voc: Voc? = null):DialogFragment()
+class DialogInput(var fakultaet: Fakultaet? = null):DialogFragment()
 {
 
     private lateinit var rootView:View
@@ -55,11 +55,11 @@ class DialogInput(var voc: Voc? = null):DialogFragment()
         initEditTexts()
 
         // Check if voc is not null:
-        if(voc != null)
+        if(fakultaet != null)
         {
             // setText from the passed voc object
-            etForeign.editText?.setText(voc?.foreignWord)
-            etNative.editText?.setText(voc?.nativeWord)
+           // etForeign.editText?.setText(fakultaet?.foreignWord)
+            etNative.editText?.setText(fakultaet?.name)
         }
     }
 
@@ -80,19 +80,19 @@ class DialogInput(var voc: Voc? = null):DialogFragment()
 
     private fun saveData()
     {
-        if(!TextUtils.isEmpty(etForeign.editText?.text.toString()) && !TextUtils.isEmpty(etNative.editText?.text.toString()))
+        if(/*!TextUtils.isEmpty(etForeign.editText?.text.toString()) && */!TextUtils.isEmpty(etNative.editText?.text.toString()))
         {
-            if(voc != null)
+            if(fakultaet != null)
             {
-                voc?.nativeWord = etNative.editText?.text.toString()
-                voc?.foreignWord = etForeign.editText?.text.toString()
-                mainViewModel.update(voc!!)
-                Toast.makeText(requireContext(),"Voc updated in Database",Toast.LENGTH_SHORT).show()
+                fakultaet?.name = etNative.editText?.text.toString()
+              //  fakultaet?.foreignWord = etForeign.editText?.text.toString()
+                mainViewModel.update(fakultaet!!)
+                Toast.makeText(requireContext(),"Fakultät updated in Database",Toast.LENGTH_SHORT).show()
             }
             else
             {
                 mainViewModel.insert(etNative.editText?.text.toString(),etForeign.editText?.text.toString())
-                Toast.makeText(requireContext(),"Voc inserted in Database",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Fakultät inserted in Database",Toast.LENGTH_SHORT).show()
             }
 
             dismiss()
