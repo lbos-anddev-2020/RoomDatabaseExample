@@ -59,7 +59,7 @@ class DialogInput(var fakultaet: Fakultaet? = null):DialogFragment()
         {
             // setText from the passed voc object
            // etForeign.editText?.setText(fakultaet?.foreignWord)
-            etNative.editText?.setText(fakultaet?.name)
+            etForeign.editText?.setText(fakultaet?.name)
         }
     }
 
@@ -74,7 +74,7 @@ class DialogInput(var fakultaet: Fakultaet? = null):DialogFragment()
 
     private fun initEditTexts()
     {
-        etForeign = rootView.findViewById(R.id.dialog_et_foreign)
+        this.etForeign = rootView.findViewById(R.id.dialog_et_foreign)
        // etNative = rootView.findViewById(R.id.dialog_et_native)
     }
 

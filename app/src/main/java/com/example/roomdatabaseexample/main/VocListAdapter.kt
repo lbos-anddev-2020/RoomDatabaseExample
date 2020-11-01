@@ -77,9 +77,9 @@ class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocL
     {
         fun setOnItemLongClickListener(pos:Int)
     }
-    fun setOnItemLongClickListener(mItemLongListener:OnItemLongClickListener)
+    fun setOnItemLongClickListener(mItemListener:OnItemLongClickListener)
     {
-        this.mItemLongListener = mItemLongListener
+        this.mItemLongListener = mItemListener
     }
 
 }
