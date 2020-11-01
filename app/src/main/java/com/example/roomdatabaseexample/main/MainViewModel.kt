@@ -5,7 +5,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.roomdatabaseexample.repository.database.Fakultaet
+import com.example.roomdatabaseexample.repository.database.entities.Fakultaet
 import com.example.roomdatabaseexample.repository.repository.AppRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -28,23 +28,23 @@ class MainViewModel(application: Application): AndroidViewModel(application)
         }
     }
 
-    fun update(fakultaet:Fakultaet)
+    fun update(fakultaet: Fakultaet)
     {
         viewModelScope.launch {
             repository.update(fakultaet)
         }
     }
 
-    fun delete(fakultaet:Fakultaet)
+    fun delete(fakultaet: Fakultaet)
     {
         viewModelScope.launch {
             repository.delete(fakultaet)
         }
     }
 
-    fun getVocById(vocId:Long):Fakultaet?
+    fun getVocById(vocId:Long): Fakultaet?
     {
-        var fakultaet:Fakultaet? = null
+        var fakultaet: Fakultaet? = null
         viewModelScope.launch {
             fakultaet = repository.getVocById(vocId)
         }

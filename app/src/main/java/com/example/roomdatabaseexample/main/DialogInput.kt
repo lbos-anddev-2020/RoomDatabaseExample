@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Fakultaet
+import com.example.roomdatabaseexample.repository.database.entities.Fakultaet
 import com.google.android.material.textfield.TextInputLayout
 
 class DialogInput(var fakultaet: Fakultaet? = null):DialogFragment()

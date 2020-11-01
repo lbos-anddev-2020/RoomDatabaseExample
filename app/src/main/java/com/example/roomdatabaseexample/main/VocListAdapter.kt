@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Fakultaet
+import com.example.roomdatabaseexample.repository.database.entities.Fakultaet
 
 class VocListAdapter(var content:ArrayList<Fakultaet>):RecyclerView.Adapter<VocListAdapter.ViewHolder>()
 {

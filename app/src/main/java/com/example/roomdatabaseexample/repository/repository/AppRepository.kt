@@ -2,15 +2,15 @@ package com.example.roomdatabaseexample.repository.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.example.roomdatabaseexample.repository.database.Fakultaet
-import com.example.roomdatabaseexample.repository.database.FakultaetDao
-import com.example.roomdatabaseexample.repository.database.StudyDataBase
+import com.example.roomdatabaseexample.repository.database.entities.Fakultaet
+import com.example.roomdatabaseexample.repository.database.dataaccessobjects.FakultaetDao
+import com.example.roomdatabaseexample.repository.database.database.StudyDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AppRepository(application: Application)
 {
-    private val fakultaetDao:FakultaetDao
+    private val fakultaetDao: FakultaetDao
 
     init {
         val db = StudyDataBase.createInstance(application)
@@ -26,7 +26,7 @@ class AppRepository(application: Application)
         }
     }
 
-    suspend fun delete(fakultaet:Fakultaet)
+    suspend fun delete(fakultaet: Fakultaet)
     {
         withContext(Dispatchers.IO)
         {
@@ -34,7 +34,7 @@ class AppRepository(application: Application)
         }
     }
 
-    suspend fun update(fakultaet:Fakultaet)
+    suspend fun update(fakultaet: Fakultaet)
     {
         withContext(Dispatchers.IO)
         {
@@ -42,9 +42,9 @@ class AppRepository(application: Application)
         }
     }
 
-    suspend fun getVocById(vocId:Long):Fakultaet?
+    suspend fun getVocById(vocId:Long): Fakultaet?
     {
-        var fakultaet:Fakultaet? = null
+        var fakultaet: Fakultaet? = null
         withContext(Dispatchers.IO)
         {
             fakultaet =  fakultaetDao.getVocById(vocId)

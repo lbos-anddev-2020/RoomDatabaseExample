@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabaseexample.R
-import com.example.roomdatabaseexample.repository.database.Fakultaet
+import com.example.roomdatabaseexample.repository.database.entities.Fakultaet
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
